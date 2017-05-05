@@ -61,12 +61,52 @@ batmans_face = os.path.join(directory, 'batmans_face.png')
 batmans_face = PIL.Image.open(batmans_face)
 batmans_face = batmans_face.resize((600,600))
 
-
 instagram_logo.paste(batmans_face, (275, 225), mask=batmans_face)
 
 fig, axes = plt.subplots(1, 1)
 axes.imshow(instagram_logo, interpolation='none')
 
 fig.show()
- </p>
+</p>
+  
+  
   <img src="images/wierdface.png" hieght="250" width="275">
+  
+  
+  <img scr="images/africa.png" hieght="250" width="275">
+  
+  <p> # Get the directory name for data files
+import os.path
+directory = os.path.dirname(os.path.abspath(__file__)) 
+
+#initialize the aggregators
+years1=[]
+African_American=[]
+years2=[]
+Watermelons=[]
+
+# Open the file
+filename = os.path.join(directory, 'Watermelon.txt')
+datafile = open(filename, 'r')
+# Go through all the names that year
+for line in datafile:
+year, af, wm = line.split(',')
+# Aggregate based on African Americans
+years1 += [year]
+Watermelons += [wm]
+#aggregate based on number of Watermelon
+years2 += [year]
+African_American += [af]
+# Close that year's file
+datafile.close()
+
+# Plot on one set of axes.
+import matplotlib.pyplot as plt
+fig, ax = plt.subplots(1, 1)
+ax.plot(years1, African_American, '#0000FF')
+ax.plot(years2, Watermelons, '#FF00FF')
+
+ax.set_title('U.S. African Americans(blue) or Watermelon(pink)')
+fig.show()
+</p>
+  
